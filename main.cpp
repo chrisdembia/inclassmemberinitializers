@@ -3,7 +3,9 @@
 // but templated initializers yield:
 // error C2352 : 'A::create_myvec' : illegal call of non - static member function
 //
-#include "stdafx.h"
+#ifdef WIN32
+    #include "stdafx.h"
+#endif
 #include <iostream>
 #include <vector>
  
