@@ -1,0 +1,20 @@
+# To learn about this file, go to http://docs.travis-ci.com/user/languages/c/
+language: cpp
+
+compiler:
+  - gcc
+  - clang
+
+before_install:
+  - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq g++-4.8
+  # Only if compiling with gcc, update environment variables
+  # to use the new gcc.
+  - if [ "$CXX" = "g++" ]; then export CXX="g++-4.8" CC="gcc-4.8"; fi
+
+install:
+  - $CXX -o initializer-test -std=c++11 main.cpp
+
+script:
+  - ./initializer-test
